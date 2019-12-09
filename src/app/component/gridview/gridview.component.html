@@ -1,0 +1,14 @@
+<div *ngIf="divflag" >
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+    *ngFor="let tile of quizzes"
+    [colspan]="spec"
+    [rowspan]="spec"
+    [style.background]="'lightblue'"  [routerLink]="['/quiz', tile.idQuiz]"  (click)="flag()" >{{tile.category}}
+
+  </mat-grid-tile>
+  <mat-grid-tile   [style.background]="'#adc2eb'"  [routerLink]="['/quiz', -1]">
+    Add Quiz
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
