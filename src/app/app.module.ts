@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { GridviewComponent } from './component/gridview/gridview.component';
 import {
-  MatCardModule,
+  MatCardModule, MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatInputModule,
@@ -27,6 +27,8 @@ import {
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import { QuestionsComponent } from './component/questions/questions.component';
+
 
 const APP_ROUTES: Routes = [
   { path: 'quiz/:id', component: QuizComponent },
@@ -38,7 +40,8 @@ const APP_ROUTES: Routes = [
     QuizComponent,
     QuestionComponent,
     CategoryNavComponent,
-    GridviewComponent
+    GridviewComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,9 @@ const APP_ROUTES: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatSlideToggleModule,
-    CdkTreeModule
+    CdkTreeModule,
+    MatExpansionModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

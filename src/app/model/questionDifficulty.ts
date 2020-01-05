@@ -1,3 +1,4 @@
-export enum QuestionDifficulty {
-  EASY = 5 , MODERATE = 15 , HARD = 25
+export   enum QuestionDifficulty {
+  EASY  , MODERATE  , HARD
+
 }

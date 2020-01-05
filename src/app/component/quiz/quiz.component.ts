@@ -30,7 +30,7 @@ export class QuizComponent implements OnInit {
   update() {
     this.idquiz= Number(this.route.snapshot.paramMap.get('id'));
     if(this.idquiz!=-1) {
-      console.log("intrat in up");
+      console.log("intrat in update");
       this.quizservice.getQuizById(this.idquiz).subscribe(quiz => {
         this.quiz = quiz;
         this.time = quiz.timeInMinutes.toString();
@@ -64,7 +64,7 @@ export class QuizComponent implements OnInit {
   }
 
   addQuiz(category: string, time: string ,difficulty: string, ispublic: boolean, israndom: boolean){
-
+     //TODO add that if else structure, it adds only "EASY"
     const quiz: Quiz= {idQuiz: -1, category: category,completionRate: 1,timeInMinutes: Number(time), difficulty: QuizzDifficulty.EASY, public: ispublic, random: israndom};
     this.quizservice.addQuiz( quiz).subscribe(() => {
       this.ngOnInit();

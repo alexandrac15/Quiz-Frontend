@@ -19,30 +19,36 @@ export class QuizService {
       Authorization: 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW5pc3RyYXRvciIsInVuaXF1ZV9uYW1lIjoiRWNhdGVyaW5hIEFuZHJvbmVzY3UiLCJuYW1laWQiOiJhZG1pbiIsIm5iZiI6MTU2NTE3ODAxOSwiZXhwIjoxNTk1MTgxNjE5LCJpYXQiOjE1NjUxNzgwMTl9.zmZFPVL9VT2mFwmq0FoEeENBzSNsDnVNXiHwzI5xQYc'
     })
   };
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {
+  }
+
   getAllQuizzes(): Observable<Quiz[]> {
     console.log('Esteeee in servie-getAllQuizzesssssssssssssss');
-    const url = 'http://localhost:8080/quiz_war_exploded/quiz/all?difficulties=&categories=' ;
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/all?difficulties=&categories=';
     console.log(url);
     return this.http.get<Quiz[]>(url, this.httpOptions);
   }
+
   getQuizById(idquiz: number): Observable<Quiz> {
     console.log('Esteeee in servie-get  quiz by id ');
-    const url = 'http://localhost:8080/quiz_war_exploded/quiz/'+idquiz ;
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/' + idquiz;
     console.log(url);
     return this.http.get<Quiz>(url, this.httpOptions);
   }
-  updateQuizById(idquiz: number, upquiz: Quiz):Observable<any>{
-    const url = 'http://localhost:8080/quiz_war_exploded/quiz/'+idquiz ;
-    console.log(url+ " quizz to be updated: "+ JSON.stringify(upquiz));
+  updateQuizById(idquiz: number, upquiz: Quiz): Observable<any> {
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/' + idquiz;
+    console.log(url + " quizz to be updated: " + JSON.stringify(upquiz));
     return this.http.put(url, upquiz, this.httpOptions);
   }
-  deleteQuizById(idquiz: number): Observable<any>{
-    const url = 'http://localhost:8080/quiz_war_exploded/quiz/'+ idquiz  ;
+
+  deleteQuizById(idquiz: number): Observable<any> {
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/' + idquiz;
     return this.http.delete(url, this.httpOptions);
   }
-  addQuiz(quiz: Quiz): Observable<any>{
-    const url = 'http://localhost:8080/quiz_war_exploded/quiz/' ;
+
+  addQuiz(quiz: Quiz): Observable<any> {
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/';
     return this.http.post(url, quiz, this.httpOptions);
   }
 }
