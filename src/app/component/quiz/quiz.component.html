@@ -1,5 +1,5 @@
-
-<mat-card>
+<div class="quiz">
+<mat-card >
   <div class="example-container">
   <mat-card-title *ngIf="idquiz!=-1">{{this.quiz.category}}</mat-card-title>
   <mat-form-field>
@@ -14,7 +14,7 @@
     <mat-select  [(ngModel)]="difficulty"><mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option></mat-select>
   </mat-form-field>
     <mat-slide-toggle [(ngModel)]="isPublic" >Public</mat-slide-toggle>
-    <mat-slide-toggle [(ngModel)]="isRandom" >Random</mat-slide-toggle>
+<!--    <mat-slide-toggle [(ngModel)]="isRandom" >Random</mat-slide-toggle>-->
 
   </div>
   <mat-card-actions>
@@ -28,5 +28,6 @@
 </mat-card>
 <div *ngIf="idquiz">
 <app-questions [idQuiz]="idquiz"></app-questions>
+</div>
 </div>
 

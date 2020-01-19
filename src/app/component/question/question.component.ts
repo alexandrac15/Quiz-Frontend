@@ -17,8 +17,7 @@ export class QuestionComponent implements OnInit {
    description: string;
    category : string;
    difficulty: string;
-   deprecated: boolean;
-   newid: number;
+   deprecated: boolean=false;
    quest: Question;
 
   constructor(private questionService: QuestionService, private questionsComponent: QuestionsComponent, private quizComponent: QuizComponent) { }
@@ -39,25 +38,7 @@ export class QuestionComponent implements OnInit {
         }
       );
   }
-  addNewQuestion(description: string, category: string, difficulty: string, deprecated: boolean ){
-    var question: Question;
-    if (difficulty=="EASY"){
-       question={idQuestion: -1, description: description, category: category, difficulty: QuestionDifficulty.EASY, deprecated: deprecated};
-    }else if(difficulty=="HARD"){
-       question={idQuestion: -1, description: description, category: category, difficulty: QuestionDifficulty.HARD, deprecated: deprecated};
 
-    }else{
-      question ={idQuestion: -1, description: description, category: category, difficulty: QuestionDifficulty.MODERATE, deprecated: deprecated};
-
-    }
-
-    this.questionService.addQuestion(question).subscribe(newid=>{
-      console.log("id is after add question   "+newid);
-      this.newid=newid;
-      this.questionsComponent.update();
-    });
-
-  }
   editQuestion(idQuestion: number, category: string, description: string, difficulty: string , deprecated: boolean): void{
     var question: Question;
     if (difficulty=="EASY"){

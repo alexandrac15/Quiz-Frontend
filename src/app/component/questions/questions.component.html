@@ -1,7 +1,8 @@
-<p>questions works!</p>
-<div *ngIf="idQuiz">
-  <div *ngIf="questions!=undefined ">
 
+<div *ngIf="idQuiz">
+
+  <div *ngIf="questions!=undefined " class="questions">
+    <button  mat-raised-button color="primary"  style="margin-right:100px"  (click)="openDialog()">Add question</button>
 <mat-expansion-panel *ngFor="let question of questions">
   <mat-expansion-panel-header>
     <mat-panel-title>

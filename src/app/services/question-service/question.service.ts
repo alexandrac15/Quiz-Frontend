@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders,HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Quiz} from '../../model/quiz';
 import {Question} from '../../model/question';
@@ -10,8 +10,10 @@ import {Question} from '../../model/question';
 export class QuestionService {
   httpOptions = {
     headers: new HttpHeaders({
+      'Acces-Control-Allow-Origin':'*',
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+
       Authorization: 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW5pc3RyYXRvciIsInVuaXF1ZV9uYW1lIjoiRWNhdGVyaW5hIEFuZHJvbmVzY3UiLCJuYW1laWQiOiJhZG1pbiIsIm5iZiI6MTU2NTE3ODAxOSwiZXhwIjoxNTk1MTgxNjE5LCJpYXQiOjE1NjUxNzgwMTl9.zmZFPVL9VT2mFwmq0FoEeENBzSNsDnVNXiHwzI5xQYc'
     })
   };
@@ -46,5 +48,14 @@ export class QuestionService {
   deleteQuestion(idQuestion: number): Observable<any>{
     const url = 'http://localhost:8080/quiz_war_exploded/questions/'+idQuestion ;
     return this.http.delete(url,this.httpOptions);
+  }
+  assignQuestion(idQuestion: number, idQuiz: number){
+    const params = new HttpParams()
+      .set('idQuiz', idQuiz.toString())
+      .set('idQuestion', idQuestion.toString());
+
+    const url = 'http://localhost:8080/quiz_war_exploded/quizQuestion/'+idQuiz+'/'+idQuestion ;
+    console.log('in service de assign'+ url);
+    return this.http.post(url,params,this.httpOptions);
   }
 }

@@ -18,7 +18,7 @@ export class QuizComponent implements OnInit {
   time: string;
   difficulty: string;
   levels: string[]=["EASY","MODERATE","HARD"];
-  isPublic: boolean=false;
+  isPublic: boolean;
   isRandom: boolean=false;
   constructor(private quizservice: QuizService,private route: ActivatedRoute,
               private router: Router,) { }
@@ -41,7 +41,7 @@ export class QuizComponent implements OnInit {
       });
     }
     this.time = "Time";
-    this.difficulty="Difficulty"
+    this.difficulty="Difficulty";
   }
   editQuiz(idquiz: number, category: string, time: string ,difficulty: string, ispublic: boolean, israndom: boolean): void {
     var quizdifficulty: QuizzDifficulty;

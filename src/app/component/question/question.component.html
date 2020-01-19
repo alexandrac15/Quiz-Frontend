@@ -13,7 +13,6 @@
       <mat-label>Difficulty</mat-label>
       <mat-select  [(ngModel)]="difficulty"><mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option></mat-select>
     </mat-form-field>
-    <mat-slide-toggle [(ngModel)]="deprecated" >Deprecated</mat-slide-toggle>
 
   </div>
   <mat-card-actions>

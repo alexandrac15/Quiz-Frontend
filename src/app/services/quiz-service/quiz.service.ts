@@ -51,6 +51,16 @@ export class QuizService {
     const url = 'http://localhost:8080/quiz_war_exploded/quiz/';
     return this.http.post(url, quiz, this.httpOptions);
   }
+  //----------------------------for user
+
+  getAllAvailableQuizzes(): Observable<Quiz[]> {
+    console.log('Este in service de getAllAvailableQuizzes');
+    const url = 'http://localhost:8080/quiz_war_exploded/quiz/available';
+    //console.log(url);
+    return this.http.get<Quiz[]>(url, this.httpOptions);
+  }
+
+
 }
 
 
